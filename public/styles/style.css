@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+	--dark-color-a: #667aff;
+	--dark-color-b: #7386ff;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+}
+
 @font-face {
     font-family: 'SF Mono Medium';
     font-style: normal;
@@ -52,7 +62,6 @@ a {
 	--tw-gradient-from: #ec4899;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(236, 72, 153, 0));
 	--tw-gradient-to: #f59e0b;
-	
 	--tw-scale-x: 1.05;
     --tw-scale-y: 1.05;
 	color: white;
@@ -64,12 +73,7 @@ a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	
-	
 }
-
-
 
 /* Chat Page */
 
@@ -80,7 +84,6 @@ a {
 	overflow: hidden;
 	border: 2px solid; 
 	border-color: rgba(204, 214, 246, 0.3);
-	
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
@@ -116,7 +119,6 @@ a {
 		text-transform: uppercase;
 		animation: waviy 1s infinite;
 		animation-delay: calc(.1s * var(--i));
-		
 	  }
 	  @keyframes waviy {
 		0%,40%,100% {
@@ -145,8 +147,7 @@ a {
 	  0 3px 5px rgba(0,0,0,.2), 
 	  0 5px 10px rgba(0,0,0,.25), 
 	  0 10px 10px rgba(0,0,0,.2), 
-	  0 20px 20px rgba(0,0,0,.15);
-	  
+	  0 20px 20px rgba(0,0,0,.15); 
 }
 
 .glow-on-hover {
@@ -159,13 +160,37 @@ a {
     cursor: pointer;
     position: relative;
     z-index: 0;
+    border-radius: 10px;	
+}
+.end-btn {
+
+	cursor: pointer;
+	padding-left: 1.20rem/* 20px */;
+    padding-right: 1.20rem/* 20px */;
+	padding-top: 1.0rem/* 8px */;
+    padding-bottom: 1.0rem/* 8px */;
+	color: white;
+	border-color: rgba(0, 0, 0);
+	border-radius: 9px;
+	font-size: 17px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
     border-radius: 10px;
-	
 }
 
 .end-btn:before {
     content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ff0000);
     position: absolute;
     top: -2px;
     left:-2px;
@@ -179,11 +204,9 @@ a {
     transition: opacity .3s ease-in-out;
     border-radius: 10px;
 }
-
 .end-btn:active {
     color: #000
 }
-
 .end-btn:active:after {
     background: transparent;
 }
@@ -191,52 +214,21 @@ a {
 .end-btn:hover:before {
     opacity: 1;
 }
-
-.gend-btn:after {
+.end-btn:after {
     z-index: -1;
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #111;
+    background: rgb(39, 39, 42);
     left: 0;
     top: 0;
     border-radius: 10px;
 }
-
 @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
-}
-
-.end-btn {
-
-	cursor: pointer;
-	padding-left: 1.20rem/* 20px */;
-    padding-right: 1.20rem/* 20px */;
-	padding-top: 1.0rem/* 8px */;
-    padding-bottom: 1.0rem/* 8px */;
-	background-color: rgb(255, 8, 0);
-	color: white;
-	border-color: rgba(0, 0, 0);
-	
-	border-radius: 9px;
-
-	font-size: 17px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 220px;
-    height: 50px;
-    border: none;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
 }
 
 .chat-main {
@@ -249,12 +241,6 @@ a {
     rgb(245, 166, 29)
   );
 	padding: 40px 10px;
-	
-
-
-
-	
-	
 }
 
 .chat-sidebar {
@@ -264,7 +250,6 @@ a {
 	overflow-y: scroll;
 	border: 2px solid; 
 	border-color: rgba(204, 214, 246, 0.5);
-	
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
@@ -274,37 +259,27 @@ a {
 .chat-sidebar h2 {
 	font-weight:200;
 	color: rgb(255, 255, 255);
-  
- 
-  font-family: system-ui;
-  font-size: 16px;
+	font-family: system-ui;
+  	font-size: 16px;
 	background:rgb(60, 60, 64) ;
 	padding: 8px;
 	margin-bottom: 20px;
 	
 }
-
 .chat-sidebar h3 {
 	margin-bottom: 15px;
 	font-weight:300;
 	color: rgb(136, 146, 176);
- 
-  
- 
-  font-family: system-ui;
-  font-size: 16px;
+	font-family: system-ui;
+	font-size: 16px;
 }
-
 .chat-sidebar ul li {
 	padding: 8px;
 	font-weight: 200;
 	background:rgb(60, 60, 64) ;
-	
- 
-  font-family: system-ui;
-  font-size: 16px;
+	font-family: system-ui;
+	font-size: 16px;
 }
-
 .chat-messages {
 	padding: 20px;
 	max-height: 500px;
@@ -312,7 +287,6 @@ a {
 	color: white;
 
 }
-
 .chat-messages .message {
 	padding: 10px;
 	margin-bottom: 15px;
@@ -321,7 +295,6 @@ a {
 	overflow-wrap: break-word;
 	
 }
-
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
@@ -330,41 +303,27 @@ a {
 	margin-bottom: 7px;
 	
 }
-
 .chat-messages .message .meta span {
 	color: #777;
 }
-
 .chat-form-container {
 	padding: 50px 50px;
 	background: rgb(39, 39, 42);
-	
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
-	
-	
 }
-
 .chat-form-container form {
 	display: flex;
 	width: 75%;
 	margin: 0 auto;
 	align-items: center;
-	
-	
-	
-	
 }
-
 .chat-form-container input[type='text'] {
 	font-size: 16px;
-	padding: 20px;
-	
-	
+	padding: 20px;	
 	height: 50px;
 	flex: 1;
 	border-color: rgba(93, 95, 100, 0.5);
-	
 	border-bottom-left-radius: 9px;
 	border-bottom-right-radius: 9px;
 	border-top-left-radius: 9px;
@@ -373,10 +332,8 @@ a {
 
 }
 
-
 .btn-msg {
 	cursor: pointer;
-	
 	padding-left: 1.0rem/* 20px */;
     padding-right: 1.0rem/* 20px */;
 	padding-top: 0.5rem/* 8px */;
@@ -385,7 +342,6 @@ a {
 	--tw-gradient-from: #ec4899;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(236, 72, 153, 0));
 	--tw-gradient-to: #f59e0b;
-	
 	--tw-scale-x: 1.05;
     --tw-scale-y: 1.05;
 	color: white;
@@ -404,12 +360,10 @@ a {
 
 /* Join Page */
 .join-container {
-	
 	max-width: 475px;
 	margin: 70px auto;
 	border: 2px solid; 
 	border-color: rgba(204, 214, 246, 0.3);
-	
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
@@ -419,13 +373,8 @@ a {
     hsl(330 81% 60%), 
     rgb(245, 166, 29)
   );
-  
-  
- 
-  
+
 }
-
-
 .circles{
     position: absolute;
     top: 0;
@@ -434,7 +383,6 @@ a {
     height: 100%;
     overflow: hidden;
 }
-
 .circles li{
     position: absolute;
     display: block;
@@ -444,17 +392,13 @@ a {
     background: rgba(255, 255, 255, 0.2);
     animation: animate 25s linear infinite;
     bottom: -150px;
-    
 }
-
 .circles li:nth-child(1){
     left: 25%;
     width: 80px;
     height: 80px;
     animation-delay: 0s;
 }
-
-
 .circles li:nth-child(2){
     left: 10%;
     width: 20px;
@@ -462,14 +406,12 @@ a {
     animation-delay: 2s;
     animation-duration: 12s;
 }
-
 .circles li:nth-child(3){
     left: 70%;
     width: 20px;
     height: 20px;
     animation-delay: 4s;
 }
-
 .circles li:nth-child(4){
     left: 40%;
     width: 60px;
@@ -567,9 +509,9 @@ a {
 	-webkit-text-fill-color: transparent;
 	animation: textclip 2s linear infinite;
 	display: inline-block;
-		font-size: 70px;
-		font-family: 'Lexend Zetta', sans-serif;
-		font-weight:300;
+	font-size: 70px;
+	font-family: 'Lexend Zetta', sans-serif;
+	font-weight:300;
   }
   
   @keyframes textclip {
@@ -601,40 +543,26 @@ a {
 }
 
 .join-main label {
-display: block;
-margin-bottom: 10px;
-color: #e6f1ff;
-font-weight: lighter;
-min-block-size: 100%;
-  min-inline-size: 100%;
-  
- 
-  font-family: system-ui;
-  font-size: min(200%, 4vmin);
-	
-	
+	display: block;
+	margin-bottom: 10px;
+	color: #e6f1ff;
+	font-weight: lighter;
+	min-block-size: 100%;
+	min-inline-size: 100%;
+	font-family: system-ui;
+	font-size: min(200%, 4vmin);
 
-	
 }
 
 .join-main input[type='text'] {
-	
 	padding: 5px;
 	height: 40px;
 	width: 100%;
-	
-	
 	border:none;
-	
-	
-	
-  
-  min-block-size: 100%;
-  min-inline-size: 100%;
-  
- 
-  font-family: system-ui;
-  font-size: min(200%, 2vmin);
+	min-block-size: 100%;
+	min-inline-size: 100%;
+	font-family: system-ui;
+	font-size: min(200%, 2vmin);
 
 }
 
@@ -646,11 +574,9 @@ min-block-size: 100%;
 }
 
 .join-main .btn {
-
 	width: 50%;
 	text-align: center;
 	padding: 15px;
-	
 	margin: 0 auto;
 	
 }

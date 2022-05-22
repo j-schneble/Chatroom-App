@@ -1,40 +1,90 @@
 const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
+
+// Use URL to get user and room
+const { username, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true,
+});
 
 const socket = io();
 
-// Msg from server 
-socket.on('message', message => {
-    console.log(message);
-    outputMessage(message);
+// Join room
+socket.emit('joinRoom', { username, room });
 
-    // Scrolling
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+// Get room and users
+socket.on('roomUsers', ({ room, users }) => {
+  outputRoomName(room);
+  outputUsers(users);
 });
 
-// Message submit
+// Msg from server
+socket.on('message', (message) => {
+  console.log(message);
+  outputMessage(message);
+
+  // Scrolling
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+// Msg submit
 chatForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Get the text of msg
-    const msg = e.target.elements.msg.value;
+  // Get the text of msg
+  let msg = e.target.elements.msg.value;
 
-    // Msg emit to server
-    socket.emit('chatMessage', msg);
+  msg = msg.trim();
 
-    // Inputs clearing
-    e.target.elements.msg.value = '';
-    e.target.elements.msg.focus();
+  if (!msg) {
+    return false;
+  }
+
+  // Msg emit to server
+  socket.emit('chatMessage', msg);
+
+  // Inputs clearing
+  e.target.elements.msg.value = '';
+  e.target.elements.msg.focus();
 });
 
-
-// Output msg to DOM
+// Output message to DOM
 function outputMessage(message) {
-    const div = document.createElement('div');
-    div.classList.add('message');
-    div.innerHtml = `<p class="meta">Brad <span>9:12pm</span></p>
-    <p class="text">
-        ${message}
-    </p>`;
-    document.querySelector('.chat-messages').appendChild(div);
+  const div = document.createElement('div');
+  div.classList.add('message');
+  const p = document.createElement('p');
+  p.classList.add('meta');
+  p.innerText = message.username;
+  p.innerHTML += `<span>${message.time}</span>`;
+  div.appendChild(p);
+  const para = document.createElement('p');
+  para.classList.add('text');
+  para.innerText = message.text;
+  div.appendChild(para);
+  document.querySelector('.chat-messages').appendChild(div);
 }
+
+// Add name of room to DOM
+function outputRoomName(room) {
+  roomName.innerText = room;
+}
+
+// Add the users to DOM
+function outputUsers(users) {
+  userList.innerHTML = '';
+  users.forEach((user) => {
+    const li = document.createElement('li');
+    li.innerText = user.username;
+    userList.appendChild(li);
+  });
+}
+
+// Question user before leaving 
+document.getElementById('leave-btn').addEventListener('click', () => {
+  const leaveRoom = confirm('Are you sure you want to leave the chatroom?');
+  if (leaveRoom) {
+    window.location = '../index.html';
+  } else {
+  }
+});
