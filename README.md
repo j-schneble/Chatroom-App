@@ -16,3 +16,4 @@ To build the project for a production environment:
 ```bash
 npm build
 ```
+iChatv2, a more secure version is available. Check it out!
